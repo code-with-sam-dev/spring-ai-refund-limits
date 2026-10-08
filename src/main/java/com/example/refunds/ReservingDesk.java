@@ -9,7 +9,8 @@ import org.springframework.transaction.support.TransactionTemplate;
 /**
  * The desk that holds. The model proposes; this decides.
  *
- * 1. The kill switch and the payment's own facts come first.
+ * 1. The payment's own facts and the kill switch come first, and
+ *    every refusal is recorded with its reason.
  * 2. One transaction reserves from the customer's and the
  *    merchant's daily allowance, and records the refund. Both fit,
  *    or nothing is reserved.
@@ -43,14 +44,14 @@ public class ReservingDesk implements RefundDesk {
 
     @Override
     public Decision issue(Ticket ticket, RefundProposal p) {
-        if (killSwitch.engaged()) {
-            return refuse(ticket, p, null, "KILL_SWITCH");
-        }
         var found = payments.find(ticket, p.paymentId());
         if (found.isEmpty()) {
             return Decision.refused(p, "UNKNOWN_PAYMENT");
         }
         var payment = found.get();
+        if (killSwitch.engaged()) {
+            return refuse(ticket, p, payment, "KILL_SWITCH");
+        }
         var problem = checkPayment(p, payment);
         if (problem != null) {
             return refuse(ticket, p, payment, problem);
