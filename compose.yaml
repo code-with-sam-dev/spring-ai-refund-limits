@@ -7,3 +7,20 @@ services:
       POSTGRES_DB: refunds
     ports:
       - "${POSTGRES_PORT:-5470}:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U refunds"]
+      interval: 2s
+      retries: 30
+
+  # Every act, no model: docker compose run --rm acts
+  acts:
+    build: .
+    profiles: ["acts"]
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/refunds
+      SUPPORT_JWT_SECRET: compose-demo-only-not-a-real-secret-0123456789
+    command: ["--spring.profiles.active=demo", "--spring.main.web-application-type=none",
+              "--spring.main.banner-mode=off", "--logging.level.root=warn"]

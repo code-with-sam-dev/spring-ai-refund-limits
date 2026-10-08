@@ -1,8 +1,9 @@
 Act 2, the naive read-then-write desk, 40 refunds of $19.99 fired at once against a $100.00 merchant
-daily limit. Six runs on 2026-10-08 (Apple silicon laptop, Postgres 17 in Docker, Java 25):
+daily limit. Seven runs on 2026-10-08 (six local, one in Docker via compose) (Apple silicon laptop, Postgres 17 in Docker, Java 25):
   paid 10, $199.90
   paid 11, $219.89
   paid 12, $239.88   (twice)
+  paid 15, $299.85   (the Docker run)
   paid 16, $319.84   (twice)
 The guarded (reserving) desk paid 5, $99.95 on every run; RefundLimitTests asserts it.
 The naive count depends on thread timing, so the video quotes the range, never one run.
