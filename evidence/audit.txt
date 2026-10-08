@@ -1,0 +1,9 @@
+ payment_id |  status  |       refusal        |  reason_code   |    agent    |    policy    | left_cents 
+------------+----------+----------------------+----------------+-------------+--------------+------------
+ RIDE-0401  | EXECUTED |                      | DRIVER_NO_SHOW | agent-james | 2026-10-08.1 |       3001
+ RIDE-0402  | EXECUTED |                      | DRIVER_NO_SHOW | agent-james | 2026-10-08.1 |       1002
+ RIDE-0403  | REFUSED  | CUSTOMER_DAILY_LIMIT | DRIVER_NO_SHOW | agent-james | 2026-10-08.1 |           
+ RIDE-0404  | REFUSED  | CUSTOMER_DAILY_LIMIT | DRIVER_NO_SHOW | agent-james | 2026-10-08.1 |           
+ RIDE-0405  | REFUSED  | CUSTOMER_DAILY_LIMIT | DRIVER_NO_SHOW | agent-james | 2026-10-08.1 |           
+(5 rows)
+

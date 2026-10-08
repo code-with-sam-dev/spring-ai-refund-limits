@@ -1,0 +1,10 @@
+  ok   the kill switch stops the money not just the agent
+  ok   read then write pays twice when the answer is lost
+  ok   reserving pays once and keeps the room spent
+  ok   reserving stops at the customers daily allowance
+  ok   read then write overspends under parallel requests
+  ok   each refund still needs its own reason
+  ok   cap only pays forty small refunds
+  ok   the reconciler records a lost answer without paying
+  ok   reserving never passes the merchants daily allowance
+Tests run: 9, Failures: 0, Errors: 0  (5.0 s)
