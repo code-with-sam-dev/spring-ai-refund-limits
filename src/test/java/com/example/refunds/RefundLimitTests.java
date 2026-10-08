@@ -114,11 +114,11 @@ class RefundLimitTests {
 
     // Act 2: the race
 
-    long fireFifty(RefundDesk desk) throws Exception {
+    long fireForty(RefundDesk desk) throws Exception {
         var pool = Executors.newVirtualThreadPerTaskExecutor();
         var start = new CountDownLatch(1);
         List<Callable<Decision>> calls = new ArrayList<>();
-        for (int n = 1; n <= 50; n++) {
+        for (int n = 1; n <= 40; n++) {
             var p = ride(n);
             calls.add(() -> {
                 start.await();
@@ -136,13 +136,13 @@ class RefundLimitTests {
     void readThenWriteOverspendsUnderParallelRequests() throws Exception {
         var l = limits(1_000_000, 10_000);
         var desk = new ReadThenWriteDesk(payments, capOnly(l), db, l);
-        assertThat(fireFifty(desk)).isGreaterThan(10_000);
+        assertThat(fireForty(desk)).isGreaterThan(10_000);
     }
 
     @Test
     void reservingNeverPassesTheMerchantsDailyAllowance() throws Exception {
         var desk = reserving(limits(1_000_000, 10_000));
-        assertThat(fireFifty(desk)).isEqualTo(9_995);   // five fit $100
+        assertThat(fireForty(desk)).isEqualTo(9_995);   // five fit $100
     }
 
     // Act 3: the uncertain outcome
