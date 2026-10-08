@@ -1,6 +1,6 @@
 act 1  cap only         40 refunds of $19.99                         paid 40, $799.60
 act 1  reserving        40 refunds of $19.99, 38 refused             paid  2, $39.98
-act 2  read then write  40 at once, limit $100.00                    paid 16, $319.84
+act 2  read then write  40 at once, limit $100.00                    paid 11, $219.89
 act 2  reserving        40 at once, limit $100.00                    paid  5, $99.95
 act 3  read then write  answer lost, retried once                    paid  2, $39.98
 act 3  reserving        answer lost: UNKNOWN, retried: EXECUTED      paid  1, $19.99

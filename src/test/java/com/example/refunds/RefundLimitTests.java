@@ -23,13 +23,15 @@ import org.testcontainers.postgresql.PostgreSQLContainer;
  * Every act of the video, with no model: the same requests against
  * the naive desk and the guarded one, and the money that moved.
  */
-@SpringBootTest(properties = "support.jwt.secret=test-only-secret-at-least-32-bytes-long")
+@SpringBootTest(properties =
+        "support.jwt.secret=test-only-secret-at-least-32-bytes-long")
 @Testcontainers
 class RefundLimitTests {
 
     @Container
     @ServiceConnection
-    static PostgreSQLContainer postgres = new PostgreSQLContainer("postgres:17");
+    static PostgreSQLContainer postgres =
+            new PostgreSQLContainer("postgres:17");
 
     @Autowired Payments payments;
     @Autowired Allowances allowances;

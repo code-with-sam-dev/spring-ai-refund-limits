@@ -22,7 +22,8 @@ CREATE TABLE refunds (
     merchant_id      text   NOT NULL,
     amount_cents     bigint NOT NULL,
     reason_code      text   NOT NULL,
-    status           text   NOT NULL,   -- RESERVED, EXECUTED, UNKNOWN, RELEASED, REFUSED
+    -- RESERVED, EXECUTED, UNKNOWN, RELEASED or REFUSED
+    status           text   NOT NULL,
     refusal          text,
     ticket_agent     text   NOT NULL,
     policy_version   text   NOT NULL,

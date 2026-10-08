@@ -31,7 +31,8 @@ public class ActsDemo implements CommandLineRunner {
     private final TransactionTemplate tx;
     private final ConfigurableApplicationContext context;
 
-    public ActsDemo(ConfigurableApplicationContext context, Payments payments, Allowances allowances,
+    public ActsDemo(ConfigurableApplicationContext context,
+                    Payments payments, Allowances allowances,
                     CardNetwork network, KillSwitch killSwitch,
                     JdbcClient db, TransactionTemplate tx) {
         this.payments = payments;
