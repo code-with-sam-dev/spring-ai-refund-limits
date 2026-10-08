@@ -1,0 +1,9 @@
+services:
+  postgres:
+    image: postgres:17
+    environment:
+      POSTGRES_USER: refunds
+      POSTGRES_PASSWORD: refunds
+      POSTGRES_DB: refunds
+    ports:
+      - "${POSTGRES_PORT:-5470}:5432"
